@@ -7,7 +7,7 @@ public class Graph
     private readonly List<Connection> connections = new(); // Connections are bidirectional
 
     /// <summary>
-    /// Create a connection between 2 countries with a travel cost.
+    /// Create a bidirectional connection between 2 countries with a travel cost.
     /// <para>
     /// If either the from or to country does not exist in the graph, it will be created as a new country instance
     /// and added to the graph.
@@ -56,8 +56,7 @@ public class Graph
     }
 
     /// <summary>
-    /// Finds the shortest path between 2 countries in the graph using Dijkstra's algorithm (find the lowest costing
-    /// path).
+    /// Finds the shortest path between 2 countries in the graph using lowest cost first search (UCS).
     /// </summary>
     /// <param name="from">The code of the country from which to start the path.</param>
     /// <param name="to">The code of the country to which to end the path.</param>
