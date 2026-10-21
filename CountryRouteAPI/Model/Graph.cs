@@ -1,5 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-
 public class Graph
 {
     private readonly List<Country> countries = new();

@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 [Route("")]
 public class CountriesController : ControllerBase
 {
-    private readonly CountryService countryService;
+    private readonly ICountryService countryService;
 
-    public CountriesController(CountryService countryService)
+    public CountriesController(ICountryService countryService)
     {
         this.countryService = countryService;
     }
