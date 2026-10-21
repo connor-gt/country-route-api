@@ -1,10 +1,10 @@
 public class Connection
 {
-    public readonly string Head;
-    public readonly string Tail;
+    public readonly Country Head;
+    public readonly Country Tail;
     public int Cost { get; set; }
 
-    public Connection(string head, string tail, int cost)
+    public Connection(Country head, Country tail, int cost)
     {
         Head = head;
         Tail = tail;
