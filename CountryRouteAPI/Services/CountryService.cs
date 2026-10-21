@@ -1,9 +1,15 @@
+/// <summary>
+/// Uses the <see cref="Graph"/> class.
+/// </summary>
 public class CountryService : ICountryService
 {
     private readonly Graph graph = new();
 
     public CountryService()
     {
+        // Costs can be updated to simulate shortest distance paths not always actually costing the least, but
+        // for the demo I'm leaving them all as 1 (so it costs 1 to go from one country to one of its bordering
+        // countries)
         graph.CreateConnection("CAN", "USA", 1);
         graph.CreateConnection("USA", "MEX", 1);
         graph.CreateConnection("MEX", "BLZ", 1);
