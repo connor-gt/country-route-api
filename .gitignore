@@ -426,3 +426,6 @@ FodyWeavers.xsd
 
 # Official VS Code C# Dev Kit Extension exclusion
 #*.lscache
+
+# I'm saving the created Program.cs file as a potential reference but leaving it out of the repository
+CountryRouteAPI/DefaultProgram.cs
