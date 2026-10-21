@@ -1,6 +1,6 @@
 public class Country
 {
-    public readonly string Code;
+    public string Code { get; init; }
 
     public Country(string code)
     {

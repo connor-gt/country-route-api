@@ -1,7 +1,7 @@
 public class Connection
 {
-    public readonly Country Head;
-    public readonly Country Tail;
+    public Country Head { get; init; }
+    public Country Tail { get; init; }
     public int Cost { get; set; }
 
     public Connection(Country head, Country tail, int cost)

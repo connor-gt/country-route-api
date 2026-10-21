@@ -16,17 +16,22 @@ public class CountriesController : ControllerBase
     {
         string startingCountry = "USA";
 
-        List<Country>? countryPath = countryService.GetPath(startingCountry, code);
-        if (countryPath == null)
+        try
         {
-            return BadRequest($"Path not found from {startingCountry} to {code}");
-        }
+            List<Country>? countryPath = countryService.GetPath(startingCountry, code);
 
-        foreach (var country in countryPath)
+            if (countryPath == null)
+            {
+                return BadRequest($"Path not found from {startingCountry} to {code}");
+            }
+
+            // Format the list to a more readable array
+            string[] path = countryPath.Select(c => c.Code).ToArray();
+            return Ok(path);
+        }
+        catch (ArgumentException)
         {
-            Console.WriteLine($"{country.Code}");
+            return NotFound($"Country with code {code} not found.");
         }
-
-        return Ok(countryPath);
     }
 }
