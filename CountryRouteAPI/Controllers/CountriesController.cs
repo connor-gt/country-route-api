@@ -11,9 +11,22 @@ public class CountriesController : ControllerBase
         this.countryService = countryService;
     }
 
-    [HttpGet]
-    public IActionResult Hello()
+    [HttpGet("{code}")]
+    public IActionResult GetPathTo([FromRoute] string code)
     {
-        return Ok("Hello from CountriesController");
+        string startingCountry = "USA";
+
+        List<Country>? countryPath = countryService.GetPath(startingCountry, code);
+        if (countryPath == null)
+        {
+            return BadRequest($"Path not found from {startingCountry} to {code}");
+        }
+
+        foreach (var country in countryPath)
+        {
+            Console.WriteLine($"{country.Code}");
+        }
+
+        return Ok(countryPath);
     }
 }
