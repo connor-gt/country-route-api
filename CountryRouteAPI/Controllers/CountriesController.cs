@@ -19,10 +19,9 @@ public class CountriesController : ControllerBase
         try
         {
             List<Country>? countryPath = countryService.GetPath(startingCountry, code);
-
             if (countryPath == null)
             {
-                return BadRequest($"Path not found from {startingCountry} to {code}");
+                return NotFound($"Path not found from {startingCountry} to {code}");
             }
 
             // Format the list to a more readable array
