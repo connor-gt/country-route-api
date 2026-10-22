@@ -28,9 +28,11 @@ GET /BLZ
 ["USA", "MEX", "BLZ"]
 ```
 
+To try a path to any of the valid countries (see supported countries below in **Assumptions I made and overall scope**), replace `/PAN` with any country code.
+
 Successful requests return HTTP 200 with a JSON array containing the starting country, any countries along the route, and the destination.
 
-Country codes are case-insensitive, so `/pan` and `/PAN` return the same result. Requesting `/USA` returns `["USA"]`. Any unrecognized/unsupported country code returns `404 Not Found`.
+Country codes are case-insensitive, so `/pan` and `/PAN` return the same result. Requesting `/USA` returns `["USA"]`. Any unrecognized/unsupported country code returns `404 Not Found` (including completely unexpected requests such as `/abcdefg123456` or `/PAN/BLZ`).
 
 ## Assumptions I made and overall scope
 
@@ -66,7 +68,7 @@ The controller handles the request and response, while the service sets up the c
 
 A country currently stores only its code, so just using strings would have been enough.
 
-I chose a `Country` class because types such as `Country` and `List<Country>` make the graph code clearer to read as opposed to something like `List<string>`. It also gives me somewhere to add country information later without changing the graph's basic structure. Although this flexibility is definitely less important for a project this small, but the readability was useful immediately.
+I chose a `Country` class because types such as `Country` and `List<Country>` make the graph code clearer to read as opposed to something like `List<string>`. It also gives me somewhere to add country information later without changing the graph's basic structure. Even though this flexibility is definitely less important for a project this small, the readability was useful immediately.
 
 ### Error responses
 
