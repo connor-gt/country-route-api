@@ -52,7 +52,7 @@ The supported country codes are:
 
 I learned about graph search methods in my algorithms class a few weeks before I started this project. Reading the requirements immediately made me think of a graph (the countries being nodes and the edges being borders), so I wanted to try implementing what I had been learning in an actual program.
 
-I chose uniform-cost search, using a priority queue to explore countries in order of the lowest accumulated travel cost.
+I chose [uniform-cost search](https://www.geeksforgeeks.org/artificial-intelligence/uniform-cost-search-ucs-in-ai/), using a priority queue to explore countries in order of the lowest accumulated travel cost.
 
 Breadth-first search would have been enough with every border crossing set to 1. I decided to include costs because I wanted something I could refer back to in future projects involving weighted connections. In this version, all costs are equal and set to 1, so the result is a route with the fewest border crossings.
 
@@ -84,15 +84,15 @@ dotnet run --project CountryRouteAPI/CountryRouteAPI.csproj --launch-profile htt
 
 Once the application starts, open [http://localhost:5174/PAN](http://localhost:5174/PAN) in a browser.
 
-The countries and borders are defined in `CountryService.cs` so no database is needed.
+The countries and borders are defined in [CountryService.cs](CountryRouteAPI/Services/CountryService.cs) so no database is needed.
 
 ## Code Tour
 
 | File | What it handles |
 | --- | --- |
-| `CountriesController.cs` | Receives a destination code, requests a route from the USA, and returns the country codes or an error response. |
-| `CountryService.cs` | Defines the supported countries and borders and calls the graph's path search. |
-| `ICountryService.cs` | Defines the service contract used by the controller. |
-| `Graph.cs` | Stores countries and connections and finds a path using uniform-cost search. |
-| `Country.cs` and `Connection.cs` | Represent countries and the weighted connections between them. |
-| `Program.cs` | Registers the service with dependency injection and maps the controllers. |
+| [CountriesController.cs](CountryRouteAPI/Controllers/CountriesController.cs) | Receives a destination code, requests a route from the USA, and returns the country codes or an error response. |
+| [CountryService.cs](CountryRouteAPI/Services/CountryService.cs) | Defines the supported countries and borders and calls the graph's path search. |
+| [ICountryService.cs](CountryRouteAPI/Services/ICountryService.cs) | Defines the service contract used by the controller. |
+| [Graph.cs](CountryRouteAPI/Model/Graph.cs) | Stores countries and connections and finds a path using uniform-cost search. |
+| [Country.cs](CountryRouteAPI/Model/Country.cs) and [Connection.cs](CountryRouteAPI/Model/Connection.cs) | Represent countries and the weighted connections between them. |
+| [Program.cs](CountryRouteAPI/Program.cs) | Registers the service with dependency injection and maps the controllers. |
